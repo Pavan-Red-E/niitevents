@@ -1,0 +1,24 @@
+<script>
+    $(document).ready(function() {
+        $('#calendar').fullCalendar({
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+          },
+          defaultView: 'month',
+          editable: true,
+          eventLimit: true,
+          events: [
+                {% for i in events %}
+                {
+                    title: "{{ i.event_name}}",
+                    start: '{{ i.start_date|date:"Y-m-d" }}',
+                    end: '{{ i.end_date|date:"Y-m-d" }}',
+                },
+                {% endfor %}
+
+            ]
+        });
+    });
+</script>
